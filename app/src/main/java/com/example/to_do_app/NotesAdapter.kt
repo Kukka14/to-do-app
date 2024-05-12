@@ -30,6 +30,14 @@ class NotesAdapter(private var notes: List<Note>, context: Context) :
         val task = notes[position]
         holder.titleTextView.text = task.title
         holder.contentTextView.text = task.content
+
+
+        holder.updateButton.setOnClickListener{
+            val intent = Intent(holder.itemView.context, UpdateTaskActivity::class.java).apply {
+                putExtra("note_id", task.id)
+            }
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     fun refreshData(newNotes: List<Note>  ) {
