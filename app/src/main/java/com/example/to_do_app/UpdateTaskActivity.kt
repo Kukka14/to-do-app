@@ -1,5 +1,6 @@
 package com.example.to_do_app
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -46,6 +47,13 @@ class UpdateTaskActivity : AppCompatActivity() {
             db.updateNote(updatedTask)
             finish()
             Toast.makeText(this, "Changes Saved", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.backButton.setOnClickListener {
+            // Create intent to navigate to MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish() // Close the current activity
         }
     }
 }
