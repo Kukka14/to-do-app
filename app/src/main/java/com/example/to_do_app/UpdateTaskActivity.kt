@@ -9,24 +9,23 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.to_do_app.databinding.ActivityUpdateTaskBinding
 
-
 class UpdateTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUpdateTaskBinding
     private lateinit var db: NoteDataBaseHelper
     private var taskId: Int = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_update_task)
+        binding = ActivityUpdateTaskBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        binding = ActivityUpdateTaskBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         db = NoteDataBaseHelper(this)
 
@@ -43,14 +42,13 @@ class UpdateTaskActivity : AppCompatActivity() {
         binding.updateSaveButton.setOnClickListener {
             val newTitle = binding.updateTitleEditText.text.toString()
             val newContent = binding.updateContentEditText.text.toString()
-            val updatedTask = Note(taskId, newTitle, newContent)
+            val updatedTask = Note(taskId, newTitle, newContent, task.status) // Pass the status from the existing task
             db.updateNote(updatedTask)
             finish()
             Toast.makeText(this, "Changes Saved", Toast.LENGTH_SHORT).show()
         }
 
         binding.backButton.setOnClickListener {
-            // Create intent to navigate to MainActivity
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish() // Close the current activity

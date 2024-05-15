@@ -6,57 +6,61 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
     app:cardElevation="4dp"
-    app:cardUseCompatPadding="true"
-    >
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
         android:background="@color/orange"
         android:padding="16dp">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp" >
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tile"
+                android:layout_marginLeft="40dp"
+                android:text="Title"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
 
             <ImageView
+                android:id="@+id/updateButton"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:id="@+id/updateButton"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="40dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toStartOf="@id/deleteButton"
                 android:src="@drawable/baseline_edit_24"
                 app:tint="@color/white" />
 
-
             <ImageView
+                android:id="@+id/deleteButton"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:id="@+id/deleteButton"
                 android:layout_alignParentEnd="true"
-
                 android:src="@drawable/baseline_delete_24"
                 app:tint="@color/white" />
 
+            <CheckBox
+                android:id="@+id/checkTextView"
+                android:layout_marginTop="1dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="281dp"
 
-
-
-
+                android:checked="false" />
 
 
         </RelativeLayout>
@@ -66,13 +70,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Content"
+            android:layout_marginLeft="40dp"
             android:textColor="@color/white"
             android:maxLines="3"
             android:layout_marginTop="4dp" />
 
-
     </LinearLayout>
-
-
 
 </androidx.cardview.widget.CardView>
